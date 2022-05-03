@@ -1,0 +1,9 @@
+input {
+  &.form-control {
+    height: 48px !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}

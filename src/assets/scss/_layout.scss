@@ -1,0 +1,29 @@
+.width-980 {
+  width: 980px;
+  max-width: 100%;
+}
+.error-inline {
+  height: 0;
+  opacity: 0;
+  font-size: 12px;
+  line-height: 16px;
+  visibility: hidden;
+
+  margin: 0;
+  transition: all ease 0.3s;
+}
+
+.error {
+  input {
+    border-color: red;
+  }
+
+  .error-inline {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 4px !important;
+    transition: all ease 0.3s;
+    color: red;
+  }
+}

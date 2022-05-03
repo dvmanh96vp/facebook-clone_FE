@@ -1,0 +1,73 @@
+<div class="login-page">
+  <div class="mx-auto width-980 d-flex">
+    <div class="information-app mr-5">
+      <img src="assets/image/logo.svg" alt="" class="logo" />
+      <h2>
+        Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của
+        bạn.
+      </h2>
+    </div>
+    <div class="form-login w-100 text-center">
+      <form class="p-3" [formGroup]="loginForm">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="userName"
+            autocomplete="off"
+            placeholder="Email hoặc số điện thoại"
+            maxlength="20"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            autocomplete="off"
+            placeholder="Mật khẩu"
+            maxlength="20"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary w-100 login"
+          (click)="submitLogin()"
+        >
+          Đăng nhập
+        </button>
+        <h4 class="text-primary mt-3">Quên mật khẩu?</h4>
+        <hr class="mt-4" />
+        <button
+          type="button"
+          (click)="openRegisterDialog()"
+          class="btn btn-success mx-2 register"
+        >
+          Tạo tài khoản mới
+        </button>
+      </form>
+      <p class="mt-4">
+        <strong>Tạo Trang</strong> dành cho người nổi tiếng, thương hiệu hoặc
+        doanh nghiệp.
+      </p>
+    </div>
+  </div>
+  <div class="footer bg-white">
+    <div class="width-980 mx-auto">
+      <ul class="d-flex flex-wrap">
+        <li class="mr-2 text-muted" *ngFor="let language of multiLang">
+          {{ language?.language }}
+        </li>
+      </ul>
+      <hr class="mt-2 mb-3" />
+
+      <ul class="d-flex flex-wrap mb-3">
+        <li class="mr-2 text-muted" *ngFor="let serivce of servicesList">
+          {{ serivce }}
+        </li>
+      </ul>
+
+      <div class="text-muted">Meta © 2022</div>
+    </div>
+  </div>
+</div>
