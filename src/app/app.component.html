@@ -1,3 +1,7 @@
-<div class="px-3 bg-light">
+<div class="app px-3 bg-light">
+  <div class = "header-position">
+    <app-header *ngIf="showHeader"></app-header>
+  </div>
+
   <router-outlet></router-outlet>
 </div>

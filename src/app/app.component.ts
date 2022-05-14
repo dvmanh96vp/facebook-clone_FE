@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {NavigationEnd, Router, RouterEvent} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'client';
+  showHeader = true;
+  constructor(private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.router.events.pipe(filter(event => event instanceof  NavigationEnd)).subscribe((res: any) => {
+      if(res?.urlAfterRedirects?.includes('login') || res?.url?.includes('login')) {
+        this.showHeader = false;
+      } else  {
+        this.showHeader = true
+      }
+    })
+  }
 }

@@ -1,6 +1,6 @@
 import { StorageKey } from './../app/core/storageKey';
 import { AppService } from './app.service';
-import { LoadingComponent } from './../app/shared/loading/loading.component';
+import { LoadingComponent } from '../app/shared/components/loading/loading.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
 import {
@@ -27,7 +27,7 @@ export class MyHttpInterceptor implements HttpInterceptor {
     let customReq = request;
     if (token) {
       customReq = request.clone({
-        headers: request.headers.set('Bear', 'Dzhavat'),
+        headers: request.headers.set('Authorization', token),
       });
     }
     return next.handle(customReq).pipe(

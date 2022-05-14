@@ -1,6 +1,6 @@
 import { Subject, takeUntil } from 'rxjs';
-import { UserService } from './../../../services/user.service';
-import { Language, Application } from './../../core/constant';
+import { UserService } from '../../../../services/user.service';
+import { Language, Application } from '../../../core/constant';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterFormComponent } from './register-form/register-form.component';
@@ -60,9 +60,9 @@ export class AccountUserComponent implements OnInit {
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (res: any) => {
-            localStorage.setItem(StorageKey.user, res.infor);
+            localStorage.setItem(StorageKey.user, JSON.stringify(res.infor));
             localStorage.setItem(StorageKey.token, res.token);
-            this.router.navigate([`/user/${res._id}`]);
+            this.router.navigate([`/user/${res.infor._id}`]);
           },
           (error) => {}
         );
@@ -80,7 +80,7 @@ export class AccountUserComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (res: any) => {
-          localStorage.setItem(StorageKey.user, res.infor);
+          localStorage.setItem(StorageKey.user, JSON.stringify(res.infor));
           localStorage.setItem(StorageKey.token, res.token);
           this.router.navigate([`/user/${res.infor._id}`]);
         },

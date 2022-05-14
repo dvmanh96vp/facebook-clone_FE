@@ -12,8 +12,8 @@ export class UserService {
     return this.httpClient.post(environment.path + 'user/create', body);
   }
 
-  getUser() {
-    return this.httpClient.get(environment.path + '/user');
+  getUserById(id:string) {
+    return this.httpClient.get(environment.path + `user?user_id=${id}`);
   }
 
   updateUser(body: any) {
@@ -22,5 +22,10 @@ export class UserService {
 
   login(body: any) {
     return this.httpClient.post(environment.path + 'user/login', body);
+  }
+
+
+  uploadImage(body: FormData) {
+    return this.httpClient.post(environment.path + 'user/upload', body);
   }
 }

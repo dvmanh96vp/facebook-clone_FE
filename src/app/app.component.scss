@@ -1,0 +1,12 @@
+.app {
+width: 100%;
+overflow: hidden;
+}
+
+.header-position {
+  margin: 0 -16px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+}

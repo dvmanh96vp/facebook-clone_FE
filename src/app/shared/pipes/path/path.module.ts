@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostComponent } from './post.component';
+import { PathPipe } from './path.pipe';
 
 
 
 @NgModule({
   declarations: [
-    PostComponent
+    PathPipe
+  ],
+  exports: [
+    PathPipe
   ],
   imports: [
     CommonModule
   ]
 })
-export class PostModule { }
+export class PathModule { }

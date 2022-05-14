@@ -5,6 +5,9 @@
 @import "assets/scss/input";
 @import "assets/scss/button";
 
+*{
+  box-sizing: border-box;
+}
 html,
 body {
   height: 100%;
@@ -54,7 +57,7 @@ p {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 img {
@@ -79,4 +82,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button, button:focus {
+  outline: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }

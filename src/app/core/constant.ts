@@ -47,3 +47,10 @@ export const Language = [
 
 export const Application =
   'Đăng ký, Đăng nhập, Messenger, Facebook, LiteWatch, Địa điểm, Trò chơi, Marketplace, Facebook Pay, Oculus, Portal, Instagram, Bulletin, Địa phương, Chiến dịch gây quỹ, Dịch vụ, Trung tâm thông tin bỏ phiếu, Nhóm Giới thiệu, Tạo quảng cáo, Tạo Trang, Nhà phát triển, Tuyển dụng, Quyền riêng tư, Cookie, Lựa chọn quảng cáo, Điều khoản, Trợ giúp, Cài đặt, Nhật ký hoạt động';
+
+export const HeaderDropdown = {
+  menu: 'menu',
+  messenger: 'messenger',
+  notify: 'notify',
+  setting: 'setting'
+}

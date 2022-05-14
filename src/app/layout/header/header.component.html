@@ -1,0 +1,39 @@
+<div class="header bg-white d-flex align-items-center justify-content-between">
+  <div class="search-form d-flex align-items-center px-3">
+    <img src="assets/image/logo-facebook.svg" alt="">
+    <div class = "input-search d-flex ml-2 align-items-center bg-light w-100 px-3">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input type="text" class="form-control" placeholder="Tìm kiếm trên Facebook" >
+    </div>
+  </div>
+  <div class="main-menu">
+    <ul class="d-flex align-items-center">
+      <li><a href=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa fa-users" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa fa-film" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+  <div class="other">
+      <ul class="d-flex justify-content-end align-items-center pr-3 pl-2">
+        <li>
+          <img [src]="user?.avatar | path" alt="">
+          <span>{{user?.lastName}}</span>
+        </li>
+        <li><i class="fa fa-th" aria-hidden="true"></i></li>
+        <li><i class="fa fa-bolt" aria-hidden="true"></i></li>
+        <li><i class="fa fa-bell" aria-hidden="true"></i></li>
+        <li><div class="dropdown w-100">
+          <button class="btn dropdown-toggle w-100">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div></li>
+      </ul>
+  </div>
+</div>

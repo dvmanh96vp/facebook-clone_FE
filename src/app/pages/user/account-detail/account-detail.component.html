@@ -1,0 +1,59 @@
+<div class="header-user">
+  <div class="img-bg">
+    <div class="image">
+      <img [src]="user?.background | path" alt="">
+      <button class="btn bg-white box"><label for="bg-id"> <i aria-hidden="true" class="fa fa-camera mr-1"></i> Chỉnh sửa
+        ảnh bìa</label>
+      </button>
+      <input (change)="handleUpdateImg($event)" id="bg-id" type="file">
+    </div>
+  </div>
+
+  <div class="info-user px-3 bg-white">
+    <div class="width-1218 mx-auto d-flex align-items-end justify-content-between pb-4">
+      <div class="left-info d-flex align-items-end">
+        <div class="avatar">
+          <img [src]="user?.avatar | path">
+          <label for="avatar-id"><i aria-hidden="true" class="fa fa-camera"></i></label>
+          <input (change)="handleUpdateImg($event, 'avatar')" id="avatar-id" type="file">
+        </div>
+        <div class="info d-flex flex-column py-3 ml-3">
+          <h2>{{user?.firstName }} {{user?.lastName}}</h2>
+          <span class="text-secondary font-weight-bold">167 ban be</span>
+          <div class="mt-1">
+            <ng-container *ngFor="let img of [1,2,3,4,5]">
+              <img
+                alt=""
+                src="https://1.bp.blogspot.com/-1F0txd6CTXk/XyjEn1_2atI/AAAAAAAAiX0/2X1yKYprbxEAPvrNA4VoX_nuv8nawCSuQCNcBGAsYHQ/s564/a5a84b393a0778e047f87c79478481e7.jpg">
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="right-setting mb-3">
+        <button class="btn bg-primary text-white"><i aria-hidden="true" class="fa fa-plus-circle mr-1"></i>Thêm vào tin
+        </button>
+        <button class="btn bg-light"><i aria-hidden="true" class="fa fa-pencil mr-1"></i>Chỉnh sửa trang cá nhân
+        </button>
+      </div>
+    </div>
+    <hr class="width-1218 mx-auto my-0">
+
+  </div>
+  <div class="bg-white">
+    <ul class=" width-1218 mx-auto d-flex align-items-center">
+      <li class="active">Bài viết</li>
+      <li>Giới thiệu</li>
+      <li>Bạn bè</li>
+      <li>Ảnh</li>
+      <li>Video</li>
+      <li>Check in</li>
+      <li>Xem thêm</li>
+    </ul>
+  </div>
+
+</div>
+
+
+<div class="main-content width-1218 mx-auto py-3">
+  <router-outlet></router-outlet>
+</div>

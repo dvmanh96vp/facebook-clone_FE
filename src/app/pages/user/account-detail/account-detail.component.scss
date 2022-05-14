@@ -1,0 +1,125 @@
+.header-user {
+  margin: 0 -16px;
+  label {
+    margin: 0 !important;
+  }
+  .img-bg {
+    background: rgb(125,174,244);
+    background: linear-gradient(180deg, rgba(125,174,244,1) 0%, rgba(255,255,255,1) 74%);
+    text-align: center;
+    margin: 0 -16px;
+    padding: 0 16px;
+
+    .image {
+      width: 1250px;
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      input {
+        display: none;
+      }
+      img {
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+        height: 462px;
+        object-fit: cover;
+      }
+
+      button {
+        position: absolute;
+        bottom: 16px;
+        right: 24px;
+        height: auto !important;
+
+        &:hover {
+          background: #e4e6eb;
+        }
+      }
+    }
+
+
+  }
+
+  .info-user {
+    .left-info {
+      margin-top: -28px;
+    }
+    .avatar {
+      position: relative;
+      img {
+        width: 168px;
+        height: 168px;
+        border: 5px solid white;
+        border-radius: 50%;
+        display: block;
+        object-fit: cover;
+      }
+      label {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #d0d0d0;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        cursor: pointer;
+        z-index: 1;
+      }
+      input {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+    }
+
+    .info {
+      h2 {
+        font-size: 32px !important;
+        line-height: 40px !important;
+      }
+      span {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: inline-block;
+        border: 2px solid white;
+        margin-left: -6px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .right-setting {
+      button {
+        height: auto !important;
+        margin: 0 4px;
+      }
+    }
+  }
+  ul.width-1218 {
+    top: 56px;
+    position: -webkit-sticky;
+    position: sticky;
+    li {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #6c757d;
+      padding: 16px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid hsl(214, 89%, 52%);
+        color: hsl(214, 89%, 52%);
+      }
+    }
+  }
+}
