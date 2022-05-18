@@ -6,12 +6,6 @@ import { HomeModule } from './pages/home/home.module';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'user',
-  },
-
-  {
-    path: 'user',
     loadChildren: () => import('./pages/user/user.module').then((m) => UserModule),
   },
   {

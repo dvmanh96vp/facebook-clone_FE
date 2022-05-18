@@ -12,16 +12,15 @@ import {StorageKey} from "../../../core/storageKey";
 export class AccountDetailComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
   user: any;
-  idUser = ''
+  userId = ''
   @ViewChild('input') inputElm!: ElementRef
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-
     this.activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: any) => {
-      this.idUser = res.id;
+      this.userId = res.id;
       // @ts-ignore
       const myUser = JSON.parse(localStorage.getItem(StorageKey.user))
       if (res.id !== myUser._id) {
@@ -42,6 +41,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     const files = event.target.files[0];
 
     const file = new FormData();
+    file.append('userId', this.userId)
     if (type) {
       file.append('type', type);
     }
@@ -49,17 +49,17 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       file.append('img', files)
     }
     this.userService.uploadImage(file).pipe(takeUntil(this.destroy$)).subscribe(res => {
-      let user
+      let userUpdate
       if(type) {
         // @ts-ignore
-        user = Object.assign(JSON.parse(localStorage.getItem(StorageKey.user)), {avatar: `img/${files.name}`});
+        userUpdate = Object.assign(JSON.parse(localStorage.getItem(StorageKey.user)), {avatar: `img/${files.name}`});
       } else {
         // @ts-ignore
-        user = Object.assign(JSON.parse(localStorage.getItem(StorageKey.user)), {background: `img/${files.name}`});
+        userUpdate = Object.assign(JSON.parse(localStorage.getItem(StorageKey.user)), {background: `img/${files.name}`});
       }
-      localStorage.setItem(StorageKey.user, JSON.stringify(user));
+      localStorage.setItem(StorageKey.user, JSON.stringify(userUpdate));
       // @ts-ignore
-      if(this.idUser === JSON.parse(localStorage.getItem(StorageKey.user))._id) {
+      if(this.userId === JSON.parse(localStorage.getItem(StorageKey.user))._id) {
         // @ts-ignore
         this.user = JSON.parse(localStorage.getItem(StorageKey.user));
       }
@@ -71,6 +71,5 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-
 
 }

@@ -8,11 +8,6 @@ import { AccountDetailModule } from './account-detail/account-detail.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
-  {
-    path: 'login',
     loadChildren: () =>
       import('./account-user/account-user.module').then(
         (m) => AccountUserModule
@@ -26,7 +21,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: ':id',
+    path: 'detail/:id',
     loadChildren: () =>
       import('./account-detail/account-detail.module').then(
         (m) => AccountDetailModule

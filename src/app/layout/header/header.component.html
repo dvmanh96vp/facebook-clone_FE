@@ -17,7 +17,7 @@
   </div>
   <div class="other">
       <ul class="d-flex justify-content-end align-items-center pr-3 pl-2">
-        <li>
+        <li [routerLink]="['/detail', user._id]">
           <img [src]="user?.avatar | path" alt="">
           <span>{{user?.lastName}}</span>
         </li>

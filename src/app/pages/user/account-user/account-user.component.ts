@@ -62,7 +62,7 @@ export class AccountUserComponent implements OnInit {
           (res: any) => {
             localStorage.setItem(StorageKey.user, JSON.stringify(res.infor));
             localStorage.setItem(StorageKey.token, res.token);
-            this.router.navigate([`/user/${res.infor._id}`]);
+            this.router.navigate(['home']);
           },
           (error) => {}
         );
@@ -82,7 +82,7 @@ export class AccountUserComponent implements OnInit {
         (res: any) => {
           localStorage.setItem(StorageKey.user, JSON.stringify(res.infor));
           localStorage.setItem(StorageKey.token, res.token);
-          this.router.navigate([`/user/${res.infor._id}`]);
+          this.router.navigate(['home']);
         },
         (err) => {}
       );

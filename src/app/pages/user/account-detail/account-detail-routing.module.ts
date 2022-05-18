@@ -9,12 +9,7 @@ const routes: Routes = [
     component: AccountDetailComponent,
     children: [
       {
-        path:'',
-        redirectTo: 'post-private',
-        pathMatch: 'full'
-      },
-      {
-        path: 'post-private',
+        path: '',
         component: PostPrivateComponent
       }
     ]

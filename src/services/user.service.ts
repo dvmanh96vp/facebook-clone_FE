@@ -28,4 +28,8 @@ export class UserService {
   uploadImage(body: FormData) {
     return this.httpClient.post(environment.path + 'user/upload', body);
   }
+
+  getMediaByUser(userId: string, page: number, size: number) {
+    return this.httpClient.get(environment.path + `media/${userId}?page=${page}&size=${size}`);
+  }
 }
