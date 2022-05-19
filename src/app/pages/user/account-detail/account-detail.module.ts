@@ -13,8 +13,8 @@ import {PostModule} from "../../../shared/components/post/post.module";
     AccountDetailComponent,
     PostPrivateComponent
   ],
-  imports: [
-    CommonModule, AccountDetailRoutingModule, PathModule, PostModule
-  ]
+    imports: [
+        CommonModule, AccountDetailRoutingModule, PathModule, PostModule
+    ]
 })
 export class AccountDetailModule { }

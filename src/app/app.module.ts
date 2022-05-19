@@ -7,18 +7,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyHttpInterceptor } from 'src/services/interceptor-service';
-import { HeaderComponent } from './layout/header/header.component';
 import {PathModule} from "./shared/pipes/path/path.module";
+import {LayoutModule} from "./layout/layout.module";
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
         MatDialogModule,
-        PathModule,
+
+      LayoutModule
     ],
     providers: [
         {
@@ -27,9 +28,6 @@ import {PathModule} from "./shared/pipes/path/path.module";
             multi: true,
         },
     ],
-    bootstrap: [AppComponent],
-    exports: [
-        HeaderComponent
-    ]
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

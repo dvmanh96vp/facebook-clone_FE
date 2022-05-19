@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from './post.component';
+import {CreatePostModule} from "../create-post/create-post.module";
 
 
 
@@ -12,7 +13,7 @@ import { PostComponent } from './post.component';
         PostComponent
     ],
     imports: [
-        CommonModule
+        CommonModule, CreatePostModule
     ]
 })
 export class PostModule { }
