@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HeaderDropdown} from "../../core/constant";
 import {StorageKey} from "../../core/storageKey";
 
@@ -11,7 +11,9 @@ export class HeaderComponent implements OnInit {
   isShow = '';
   typeDropdown = HeaderDropdown;
   user: any;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     // @ts-ignore

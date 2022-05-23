@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {CreatePostComponent} from "./create-post.component";
 import {PathModule} from "../../pipes/path/path.module";
 import {LayoutModule} from "../../../layout/layout.module";
+import {DialogModule} from "../dialog/dialog.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -11,7 +13,9 @@ import {LayoutModule} from "../../../layout/layout.module";
   imports: [
     CommonModule,
     PathModule,
-    LayoutModule
+    LayoutModule,
+    DialogModule,
+    FormsModule
   ],
   exports: [CreatePostComponent]
 })

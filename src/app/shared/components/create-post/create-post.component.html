@@ -1,13 +1,52 @@
 <div class="box px-3 pb-2 pt-3 bg-white">
   <div class="d-flex">
-    <app-avatar [img] = "user.avatar" class = "mr-2"></app-avatar>
-    <p class = "bg-light py-2 px-3 flex-grow-1">Bạn đang nghĩ gì</p>
+    <app-avatar [img]="user.avatar" class="mr-2"></app-avatar>
+    <p (click)="visible = true" class="bg-light py-2 px-3 flex-grow-1">Bạn đang nghĩ gì</p>
   </div>
   <hr>
 
-    <ul class="d-flex justify-content-between align-items-center">
-      <li class="text-secondary"><i class="bi bi-camera-reels-fill text-danger"></i> Video trực tiếp</li>
-      <li class="text-secondary"><i class="bi bi-file-earmark-image text-success"></i> Video trực tiếp</li>
-      <li class="text-secondary"><i class="bi bi-flag text-primary"></i> Video trực tiếp</li>
-    </ul>
+  <ul class="d-flex justify-content-between align-items-center">
+    <li class="text-secondary"><i class="bi bi-camera-reels-fill text-danger"></i> Video trực tiếp</li>
+    <li class="text-secondary"><i class="bi bi-file-earmark-image text-success"></i> Video trực tiếp</li>
+    <li class="text-secondary"><i class="bi bi-flag text-primary"></i> Video trực tiếp</li>
+  </ul>
 </div>
+
+
+<app-dialog [(visible)]="visible">
+  <div class="created-form">
+    <div class="position-relative header p-3 text-center">
+      <h3>Tạo bài viết</h3>
+      <i class="bi bi-x position-absolute bg-light" (click)="visible = false"></i>
+    </div>
+    <hr class="m-0">
+    <div class="body p-3">
+      <div class="user-info d-flex mb-3">
+        <app-avatar [img]="user.avatar" class="mr-2"></app-avatar>
+        <h4>{{user.firstName}} {{user.lastName}}</h4>
+      </div>
+      <div class="text-area">
+        <textarea [placeholder]="placeholder" [(ngModel)]="desc" name = "desc" class="w-100" maxlength="1000"></textarea>
+        <div class="d-flex px-3 py-1 border rounded align-items-center justify-content-between mt-3">
+          <h4>Thêm vào bài viết</h4>
+          <div>
+            <ul class="d-flex align-items-center">
+              <li>
+                <label for="inp-file">
+                <i class="bi bi-file-image text-success"></i>
+              </label>
+                <input type="file" multiple id = "inp-file" (change)="handleUploadFile($event)"/>
+              </li>
+              <li><i class="bi bi-person-plus-fill text-primary"></i></li>
+              <li><i class="bi bi-emoji-smile text-warning"></i></li>
+              <li><i class="bi bi-geo-alt-fill text-danger"></i></li>
+              <li><i class="bi bi-flag-fill"></i></li>
+              <li><i class="bi bi-three-dots text-secondary"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary py-1 px-3 w-100 mt-3" (click)="handleCreateArticle()">Đăng</button>
+    </div>
+  </div>
+</app-dialog>

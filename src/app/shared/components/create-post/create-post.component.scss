@@ -1,3 +1,9 @@
+.bg-light {
+  &:hover {
+    background-color: rgb(108 117 125 / 34%) !important
+  }
+}
+
 p {
   border-radius: 20px;
   cursor: pointer;
@@ -21,6 +27,64 @@ ul {
 
     i {
       font-size: 20px;
+    }
+  }
+}
+
+.created-form {
+  max-width: 464px;
+  min-width: 464px;
+  max-height: 428px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  border-radius: 8px;
+
+  .header {
+    i {
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 32px;
+      line-height: 36px;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .body {
+    .text-area {
+      textarea {
+        border: none;
+        resize: none;
+        outline: none;
+        min-height: 120px;
+        max-height: 150px;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+
+    ul {
+      li {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(108 117 125 / 20%);
+        }
+      }
+    }
+
+    button {
+      height: auto !important;
     }
   }
 }
