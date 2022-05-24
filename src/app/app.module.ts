@@ -18,7 +18,6 @@ import {LayoutModule} from "./layout/layout.module";
         BrowserAnimationsModule,
         HttpClientModule,
         MatDialogModule,
-
       LayoutModule
     ],
     providers: [

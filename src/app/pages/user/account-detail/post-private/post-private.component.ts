@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../services/user.service";
+import {UserStoreService} from "../../../../core/store/user-store.service";
 
 @Component({
   selector: 'app-post-private',
@@ -10,12 +11,22 @@ import {UserService} from "../../../../../services/user.service";
 })
 export class PostPrivateComponent implements OnInit {
   destroy$ = new Subject();
-  album!: string[]
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
+  album!: string[];
+  id = '';
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private userStoreSV: UserStoreService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: any) => {
+      this.id = res.id;
       this.handleGetMedia(res.id)
+    });
+
+    this.userStoreSV.listFileMedia$.subscribe(res => {
+      if(res.length) {
+        res.forEach((item: any) => {
+          this.album.push(`img/${item.name}`)
+        })
+      }
     })
   }
 

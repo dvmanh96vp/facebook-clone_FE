@@ -88,3 +88,22 @@ ul {
     }
   }
 }
+
+.preview-src {
+  min-width: 100px;
+  max-width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.preview-item {
+  i {
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    background: white;
+    line-height: 1;
+    border-radius: 50%;
+  }
+}
