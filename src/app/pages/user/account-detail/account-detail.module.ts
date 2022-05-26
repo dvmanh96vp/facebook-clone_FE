@@ -5,6 +5,7 @@ import { AccountDetailRoutingModule } from './account-detail-routing.module';
 import {PathModule} from "../../../shared/pipes/path/path.module";
 import { PostPrivateComponent } from './post-private/post-private.component';
 import {PostModule} from "../../../shared/components/post/post.module";
+import {CreatePostModule} from "../../../shared/components/create-post/create-post.module";
 
 
 
@@ -14,7 +15,7 @@ import {PostModule} from "../../../shared/components/post/post.module";
     PostPrivateComponent
   ],
     imports: [
-        CommonModule, AccountDetailRoutingModule, PathModule, PostModule
+        CommonModule, AccountDetailRoutingModule, PathModule, PostModule, CreatePostModule
     ]
 })
 export class AccountDetailModule { }

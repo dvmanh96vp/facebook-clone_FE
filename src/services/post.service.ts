@@ -12,4 +12,8 @@ export class PostService {
   createArticle(body: any) {
     return this.http.post(environment.path + 'post/create', body);
   }
+
+  getListArticle(id: string) {
+    return this.http.get(environment.path+ `post/${id}`)
+  }
 }

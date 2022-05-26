@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {StorageKey} from "../../../core/storageKey";
 import {PostService} from "../../../../services/post.service";
 import {Subject, takeUntil} from "rxjs";
@@ -18,7 +18,8 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   desc = '';
   destroy$ = new Subject();
   @Input() id: string = '';
-  constructor(private postService: PostService, private userStoreSV: UserStoreService) { }
+  @Output() onFile = new EventEmitter();
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -38,7 +39,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
 
     this.postService.createArticle(formData).pipe(takeUntil(this.destroy$)).subscribe(res => {
       if(this.id && this.filePreview.length) {
-        this.userStoreSV.handleSaveList(this.filePreview)
+        this.onFile.emit(this.filePreview)
       }
       this.fileUpload = [];
       this.filePreview = [];

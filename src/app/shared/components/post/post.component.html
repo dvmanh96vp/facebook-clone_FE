@@ -1,1 +1,26 @@
-<app-create-post [id] = "id"></app-create-post>
+<div class="article-post box bg-white">
+  <div class="d-flex p-3">
+    <app-avatar [img]="data.avatar" class="mr-2"></app-avatar>
+    <div>
+      <h4>{{data.fullName}}</h4>
+      <span>{{data.createdAt | createdTime}}</span>
+    </div>
+  </div>
+  <div>
+    <p class="px-3 mb-3">{{data.desc}}</p>
+    <ng-container *ngFor = "let source of data.media">
+      <img [src]="source.path | path" alt="">
+<!--      <video [src]="source.path | path"></video>-->
+    </ng-container>
+  </div>
+  <div class="px-3 py-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="btn"><i class="bi bi-hand-thumbs-up"></i> Thích </button>
+      <button class="btn"><i class="bi bi-chat"></i> Bình luận</button>
+      <button class="btn"><i class="bi bi-share"></i> Chia sẻ</button>
+    </div>
+    <hr class="my-2">
+
+    <app-create-comment></app-create-comment>
+  </div>
+</div>
