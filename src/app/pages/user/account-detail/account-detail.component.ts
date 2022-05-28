@@ -12,7 +12,8 @@ import {StorageKey} from "../../../core/storageKey";
 export class AccountDetailComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
   user: any;
-  userId = ''
+  userId = '';
+  myUser: any;
   @ViewChild('input') inputElm!: ElementRef
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
@@ -22,11 +23,11 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: any) => {
       this.userId = res.id;
       // @ts-ignore
-      const myUser = JSON.parse(localStorage.getItem(StorageKey.user))
-      if (res.id !== myUser._id) {
+      this.myUser = JSON.parse(localStorage.getItem(StorageKey.user))
+      if (res.id !== this.myUser._id) {
         this.handleGetUserInfo(res.id)
       } else {
-        this.user = myUser;
+        this.user = this.myUser;
       }
     })
   }
@@ -65,6 +66,24 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       }
       event.target.value = '';
     }, error => event.target.value = '')
+  }
+
+
+  handleAddFriend():void {
+    const body = {
+      idReq: this.userId,
+      userId: this.myUser._id
+    }
+    this.userService.requestFriend(body).pipe(takeUntil(this.destroy$)).subscribe(res => {})
+  }
+
+  handleAccept() {
+    const body = {
+      idAcc: this.userId,
+      userId: this.myUser._id
+    }
+
+    this.userService.acceptFriend(body).pipe(takeUntil(this.destroy$)).subscribe(res => {})
   }
 
   ngOnDestroy(): void {

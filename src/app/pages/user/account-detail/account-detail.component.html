@@ -2,7 +2,9 @@
   <div class="img-bg">
     <div class="image">
       <img [src]="user?.background | path" alt="">
-      <button class="btn bg-white box"><label for="bg-id"> <i aria-hidden="true" class="fa fa-camera mr-1"></i> Chỉnh sửa
+      <button *ngIf="userId === myUser._id" class="btn bg-white box"><label for="bg-id"> <i aria-hidden="true"
+                                                                                            class="fa fa-camera mr-1"></i>
+        Chỉnh sửa
         ảnh bìa</label>
       </button>
       <input (change)="handleUpdateImg($event)" id="bg-id" type="file">
@@ -30,10 +32,14 @@
         </div>
       </div>
       <div class="right-setting mb-3">
-        <button class="btn bg-primary text-white"><i aria-hidden="true" class="fa fa-plus-circle mr-1"></i>Thêm vào tin
-        </button>
-        <button class="btn bg-light"><i aria-hidden="true" class="fa fa-pencil mr-1"></i>Chỉnh sửa trang cá nhân
-        </button>
+        <ng-container *ngIf="userId === myUser._id; else moreAction">
+          <button class="btn bg-primary text-white"><i aria-hidden="true" class="fa fa-plus-circle mr-1"></i>Thêm vào
+            tin
+          </button>
+          <button class="btn bg-light"><i aria-hidden="true" class="fa fa-pencil mr-1"></i>Chỉnh sửa trang cá nhân
+          </button>
+        </ng-container>
+
       </div>
     </div>
     <hr class="width-1218 mx-auto my-0">
@@ -53,6 +59,13 @@
 
 </div>
 
+
+<ng-template #moreAction>
+  <button class="btn bg-primary text-white" (click)="handleAddFriend()"><i aria-hidden="true" class="bi bi-person-plus-fill mr-1"></i>Thêm bạn bè
+  </button>
+  <button class="btn bg-light"><i aria-hidden="true" class="bi bi-chat-dots mr-1"></i>Nhắn tin
+  </button>
+</ng-template>
 
 <div class="main-content width-1218 mx-auto py-3">
   <router-outlet></router-outlet>

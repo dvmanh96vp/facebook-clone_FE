@@ -1,26 +1,39 @@
 <div class="article-post box bg-white">
-  <div class="d-flex p-3">
-    <app-avatar [img]="data.avatar" class="mr-2"></app-avatar>
-    <div>
-      <h4>{{data.fullName}}</h4>
-      <span>{{data.createdAt | createdTime}}</span>
+  <div class="d-flex justify-content-between w-100 p-3">
+    <div class="d-flex">
+      <app-avatar [img]="data.avatar" class="mr-2"></app-avatar>
+      <div>
+        <h4>{{data.fullName}}</h4>
+        <span>{{data.createdAt | createdTime}}</span>
+      </div>
     </div>
+    <h4 class="text-secondary" (click)="handleDelete()">Xóa bài viết</h4>
+
   </div>
   <div>
     <p class="px-3 mb-3">{{data.desc}}</p>
-    <ng-container *ngFor = "let source of data.media">
-      <img [src]="source.path | path" alt="">
-<!--      <video [src]="source.path | path"></video>-->
-    </ng-container>
+    <div class="d-flex justify-content-center">
+      <ng-container *ngFor = "let source of data.media">
+        <img [src]="source.path | path" alt="">
+        <!--      <video [src]="source.path | path"></video>-->
+      </ng-container>
+    </div>
+
   </div>
   <div class="px-3 py-2">
     <div class="d-flex justify-content-between align-items-center">
-      <button class="btn"><i class="bi bi-hand-thumbs-up"></i> Thích </button>
-      <button class="btn"><i class="bi bi-chat"></i> Bình luận</button>
-      <button class="btn"><i class="bi bi-share"></i> Chia sẻ</button>
+      <button class="btn" [class.text-primary]="liked" (click)="handleUpdate('like')"><i class="bi bi-hand-thumbs-up"></i> Thích </button>
+      <button class="btn" (click)="actionCmt = true"><i class="bi bi-chat"></i> Bình luận</button>
+     <ng-container *ngIf = "data.userId === userId; else share">
+       <button class="btn" (click) = "handleEdit()"><i class="bi bi-pencil-fill"></i> Chỉnh sửa bài viết</button>
+     </ng-container>
+
     </div>
     <hr class="my-2">
-
-    <app-create-comment></app-create-comment>
+    <app-create-comment [(clickCmt)] = "actionCmt" [id] = "data._id"></app-create-comment>
   </div>
 </div>
+
+<ng-template #share>
+  <button class="btn"><i class="bi bi-share"></i> Chia sẻ</button>
+</ng-template>

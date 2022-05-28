@@ -32,4 +32,12 @@ export class UserService {
   getMediaByUser(userId: string, page: number, size: number) {
     return this.httpClient.get(environment.path + `media/${userId}?page=${page}&size=${size}`);
   }
+
+  requestFriend(body: any) {
+    return this.httpClient.post(environment.path + 'user/request-friend', body)
+  }
+
+  acceptFriend(body: any) {
+    return this.httpClient.post(environment.path + 'user/accept-friend', body)
+  }
 }

@@ -1,4 +1,4 @@
 <div class="d-flex">
   <app-avatar [img]="avatar" class="mr-2"></app-avatar>
-  <input type="text form-control" class="flex-grow-1 px-3 py-2" placeholder="Viết bình luận">
+  <input #inpCmt (focusout)="handleFocusOut()" type="text form-control" class="flex-grow-1 px-3 py-2" placeholder="Viết bình luận">
 </div>

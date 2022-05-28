@@ -12,7 +12,7 @@ import {Article} from "../../../../core/models/article.model";
 })
 export class PostPrivateComponent implements OnInit {
   destroy$ = new Subject();
-  album!: string[];
+  album!: any[];
   id = '';
   listPost!: Article[]
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private postService: PostService) { }
@@ -28,7 +28,7 @@ export class PostPrivateComponent implements OnInit {
   handleAddMedia($event: any) {
     if($event.length) {
       $event.forEach((item: any) => {
-        this.album.push(`img/${item.name}`)
+        this.album.push({path:`img/${item.name}`, type: $event.type})
       })
     }
   }
@@ -43,6 +43,10 @@ export class PostPrivateComponent implements OnInit {
   handleGetListArticle(id: string) {
     // @ts-ignore
     this.postService.getListArticle(id).pipe(takeUntil(this.destroy$)).subscribe((res: Article[]) => this.listPost = res)
+  }
+
+  handleRemoveArticle(id: string) {
+    this.listPost = this.listPost.filter((item: Article) => item._id !== id);
   }
 
 }

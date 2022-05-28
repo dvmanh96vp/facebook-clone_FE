@@ -10,4 +10,12 @@
       background-color: rgb(134 137 140 / 10%);
     }
   }
+
+  h4.text-secondary {
+    &:hover {
+      text-decoration: underline;
+      color: #216ff1 !important;
+      cursor: pointer;
+    }
+  }
 }

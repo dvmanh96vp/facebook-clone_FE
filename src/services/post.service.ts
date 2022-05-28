@@ -16,4 +16,12 @@ export class PostService {
   getListArticle(id: string) {
     return this.http.get(environment.path+ `post/${id}`)
   }
+
+  deleteArticle(body: any) {
+    return this.http.post(environment.path+ `post/delete`, body)
+  }
+
+  updateArticle(body: any) {
+    return this.http.post(environment.path + `post/update`, body)
+  }
 }
