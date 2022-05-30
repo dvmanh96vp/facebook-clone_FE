@@ -43,10 +43,12 @@
         <button class="btn btn-light text-primary">Xem tất cả bạn bè</button>
       </div>
       <div class="row">
-        <div *ngFor="let img of [1,2,3,4,5,6,7,8,9]" class="col-md-4 mb-2">
-          <img alt="" src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-1-480x600.jpg">
-          <h4>Friend 1</h4>
-          <span class="text-secondary">1 bạn chung</span>
+        <div *ngFor="let friend of listFriend; let i = index" class="col-md-4 mb-2">
+          <ng-container *ngIf="i < 9">
+            <img alt="" src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-1-480x600.jpg">
+            <h4>Friend 1</h4>
+          </ng-container>
+
         </div>
       </div>
     </div>

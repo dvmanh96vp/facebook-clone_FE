@@ -40,4 +40,12 @@ export class UserService {
   acceptFriend(body: any) {
     return this.httpClient.post(environment.path + 'user/accept-friend', body)
   }
+
+  getListFriend(id:string) {
+    return this.httpClient.get(environment.path + `user/list-friend/${id}`)
+  }
+
+  getListFollower(id:string) {
+    return this.httpClient.get(environment.path + `user/list-follower/${id}`)
+  }
 }

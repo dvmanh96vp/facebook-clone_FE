@@ -21,9 +21,9 @@
         </div>
         <div class="info d-flex flex-column py-3 ml-3">
           <h2>{{user?.firstName }} {{user?.lastName}}</h2>
-          <span class="text-secondary font-weight-bold">167 ban be</span>
+          <span class="text-secondary font-weight-bold">{{listFriend.length}} bạn bè</span>
           <div class="mt-1">
-            <ng-container *ngFor="let img of [1,2,3,4,5]">
+            <ng-container *ngFor="let img of listFriend">
               <img
                 alt=""
                 src="https://1.bp.blogspot.com/-1F0txd6CTXk/XyjEn1_2atI/AAAAAAAAiX0/2X1yKYprbxEAPvrNA4VoX_nuv8nawCSuQCNcBGAsYHQ/s564/a5a84b393a0778e047f87c79478481e7.jpg">
@@ -61,10 +61,11 @@
 
 
 <ng-template #moreAction>
-  <button class="btn bg-primary text-white" (click)="handleAddFriend()"><i aria-hidden="true" class="bi bi-person-plus-fill mr-1"></i>Thêm bạn bè
+  <button *ngIf="!listFollower?.includes(userId) && !listFriend?.includes(userId)"  class="btn bg-primary text-white" (click)="handleAddFriend()"><i aria-hidden="true" class="bi bi-person-plus-fill mr-1"></i>Thêm bạn bè
   </button>
-  <button class="btn bg-light"><i aria-hidden="true" class="bi bi-chat-dots mr-1"></i>Nhắn tin
-  </button>
+  <button *ngIf="listFollower?.includes(userId)" class="btn bg-primary text-white" (click)="handleAccept()"><i class="bi bi-person-check-fill mr-1"></i>Chấp nhận</button>
+  <button *ngIf = "listFriend?.includes(userId)" class="btn bg-primary text-white"><i class="bi bi-person-dash-fill mr-1"></i>Hủy bạn bè</button>
+  <button class="btn bg-light"><i aria-hidden="true" class="bi bi-chat-dots mr-1"></i>Nhắn tin</button>
 </ng-template>
 
 <div class="main-content width-1218 mx-auto py-3">

@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../../../../services/user.service";
-import {Subject, takeUntil} from "rxjs";
+import {forkJoin, Subject, takeUntil} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {StorageKey} from "../../../core/storageKey";
 
@@ -14,6 +14,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   user: any;
   userId = '';
   myUser: any;
+  listFriend!: string[];
+  listFollower!: string[];
   @ViewChild('input') inputElm!: ElementRef
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
@@ -29,6 +31,17 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       } else {
         this.user = this.myUser;
       }
+    });
+    this.handleGetInformation();
+  }
+
+  handleGetInformation():void {
+    const listApi = [this.userService.getListFollower(this.myUser._id), this.userService.getListFriend(this.myUser._id)];
+    forkJoin(listApi).pipe(takeUntil(this.destroy$)).subscribe(([listFollow, listFriend]) => {
+      // @ts-ignore
+      this.listFollower = listFollow.follower;
+      // @ts-ignore
+      this.listFriend= listFriend.friend
     })
   }
 
@@ -74,7 +87,12 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       idReq: this.userId,
       userId: this.myUser._id
     }
-    this.userService.requestFriend(body).pipe(takeUntil(this.destroy$)).subscribe(res => {})
+    this.userService.requestFriend(body).pipe(takeUntil(this.destroy$)).subscribe(res => {
+      this.userService.getListFriend(this.myUser._id).pipe(takeUntil(this.destroy$)).subscribe(res => {
+        // @ts-ignore
+        this.listFriend= res.friend
+      })
+    })
   }
 
   handleAccept() {

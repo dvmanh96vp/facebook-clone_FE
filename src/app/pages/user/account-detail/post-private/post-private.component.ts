@@ -14,7 +14,8 @@ export class PostPrivateComponent implements OnInit {
   destroy$ = new Subject();
   album!: any[];
   id = '';
-  listPost!: Article[]
+  listPost!: Article[];
+  listFriend!: string[];
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private postService: PostService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class PostPrivateComponent implements OnInit {
       this.id = res.id;
       this.handleGetMedia(res.id);
       this.handleGetListArticle(res.id);
+      this.handleGetListFriend(res.id);
     });
   }
 
@@ -31,6 +33,13 @@ export class PostPrivateComponent implements OnInit {
         this.album.push({path:`img/${item.name}`, type: $event.type})
       })
     }
+  }
+
+  handleGetListFriend(id:string) {
+    this.userService.getListFriend(id).pipe(takeUntil(this.destroy$)).subscribe(res => {
+      // @ts-ignore
+      this.listFriend= res.friend
+    })
   }
 
   handleGetMedia(userId: string, page: number = 1, size: number = 9) {
